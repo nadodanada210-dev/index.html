@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوة فرح ملكية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Aref+Ruqaa:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #d4af37; --dark-gold: #b8860b; }
+        body {
+            margin: 0; padding: 0;
+            background: linear-gradient(rgba(255, 250, 240, 0.8), rgba(255, 250, 240, 0.8)), 
+                        url('https://images.unsplash.com/photo-1582192732881-43b74633ac05?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover; background-attachment: fixed;
+            font-family: 'Amiri', serif; display: flex;
+            justify-content: center; align-items: center;
+            min-height: 100vh; overflow-x: hidden;
+        }
+        .heart { position: absolute; color: var(--gold); font-size: 20px; animation: fall linear infinite; text-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+        .container {
+            position: relative; width: 85%; max-width: 450px;
+            background: rgba(255, 255, 255, 0.95); padding: 50px 25px;
+            text-align: center; border: 2px solid var(--gold);
+            outline: 8px double var(--gold); outline-offset: -15px;
+            border-radius: 5px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); z-index: 1;
+        }
+        h1 { font-family: 'Aref Ruqaa', serif; color: var(--dark-gold); font-size: 2.5rem; margin: 10px 0; }
+        .whatsapp-btn {
+            display: inline-block; margin-top: 25px; padding: 12px 30px;
+            background: #25D366; color: white; text-decoration: none;
+            border-radius: 30px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="heartsContainer"></div>
+
+    <div class="container">
+        <p style="color: var(--gold);">﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا ﴾</p>
+        <h1>سارة & أحمد</h1>
+        <p>يتشرفون بدعوتكم لحضور حفل زفافهم البهيج</p>
+        <p><strong>يوم السبت، 15 يوليوز 2026</strong></p>
+        <p>📍 قاعة الأفراح الملكية</p>
+        <a href="https://wa.me/212600000000" class="whatsapp-btn">تأكيد الحضور عبر واتساب</a>
+        <p style="font-size: 0.8rem; color: #888; margin-top: 20px;">🎵 اضغط لتشغيل الموسيقى</p>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const container = document.getElementById('heartsContainer');
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            container.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+
+        document.body.addEventListener('click', function() {
+            const audio = document.getElementById('bgMusic');
+            if (audio.paused) audio.play();
+        });
+    </script>
+</body>
+</html>
